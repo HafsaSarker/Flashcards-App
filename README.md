@@ -2,9 +2,9 @@
 
 Submitted by: **Hafsa Sarker**
 
-This web app: **insert description**
+This web app: **An extension of the previous flashcard application with added features. Users can guess the answer before flipping the card. Users can also go back and forward in the array of study set.**
 
-Time spent: **X** hours spent in total
+Time spent: **4** hours spent in total
 
 ## Required Features
 
@@ -31,10 +31,10 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='C:\Users\Hafsa\Desktop\Project-3\flashcards\public\Project3Demo.gif' title='Video Walkthrough' width='700' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  
+GIF created with LiceCAP  
 <!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
@@ -42,11 +42,11 @@ GIF created with ...
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+    While building this app, I struggled with the back and forward button. I thought it would be easy, we just increment or decrement the index, considering edge cases of course. However, when clicking the next button, the state variable I used to store my index, was not updating immedietly. I reasearched why this was happening and found something out about state being asynchronous. For now, I added a +1 to the variable but for this exact reason, I was not able to imlement the streak feature. 
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2023] [Hafsa Sarker]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
