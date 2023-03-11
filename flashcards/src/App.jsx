@@ -22,19 +22,25 @@ function App() {
   }
   const handleChange = (event) => {
     setInput(event.target.value);
-    console.log({input});
+    // console.log({input});
    
+  }
+
+  const resetInput = () => {
+    setInput("");
+    setIsCorrect("");
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("submitted input: ", input);
+    // console.log("submitted input: ", input);
     const submittedInout = input.toLowerCase();
     setIsCorrect(submittedInout === answer ? "right" : "wrong");
-    console.log({isCorrect})
+    // console.log({isCorrect})
   }
 
   const showRandomCard = () =>{
+    resetInput();
     const randNum = Math.floor(Math.random() * studySet.length);
     setRandIndex(randNum);
     // console.log({randIndex});
@@ -46,6 +52,7 @@ function App() {
     if(cardIndex >= 23){
       return;
     }
+    resetInput();
     setIsShuffling(false);
     setCardIndex(cardIndex + 1);
     // console.log({cardIndex});
@@ -55,6 +62,7 @@ function App() {
     if(cardIndex <= 0){
       return;
     }
+    resetInput();
     setIsShuffling(false);
     setCardIndex(cardIndex - 1);
     showCard(cardIndex-1);
