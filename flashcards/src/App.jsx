@@ -15,7 +15,8 @@ function App() {
   const [categColor, setcategColor] = useState('blue');
   const [input, setInput] = useState("");
   const [isCorrect, setIsCorrect] = useState("");
-
+  const [streak, setStreak] = useState(0);
+  const [longestStreak, setLongestStreak] = useState([]);
   //style for user's answer result
   const styles = {
     color: isCorrect === "right" ? "green" : "red"
@@ -39,9 +40,20 @@ function App() {
     // console.log({isCorrect})
   }
 
+  const streakStats = () => {
+    setStreak(prevStreak => isCorrect === "right" ? prevStreak + 1 : 0);
+    setLongestStreak(prevState => {
+      return (
+        prevState.slice()
+
+      )
+    })
+  }
+
   const showRandomCard = () =>{
     resetInput();
     const randNum = Math.floor(Math.random() * studySet.length);
+    streakStats();
     setRandIndex(randNum);
     // console.log({randIndex});
     setIsShuffling(true);
@@ -52,6 +64,7 @@ function App() {
     if(cardIndex >= 23){
       return;
     }
+    streakStats();
     resetInput();
     setIsShuffling(false);
     setCardIndex(cardIndex + 1);
@@ -62,6 +75,7 @@ function App() {
     if(cardIndex <= 0){
       return;
     }
+    streakStats();
     resetInput();
     setIsShuffling(false);
     setCardIndex(cardIndex - 1);
@@ -89,6 +103,7 @@ function App() {
       </header>
 
       <div className="card-component" onClick={showBack}>
+        <h3>Current streak: {streak}</h3>
         <Card 
           img = {question}
           categColor = {categColor}
