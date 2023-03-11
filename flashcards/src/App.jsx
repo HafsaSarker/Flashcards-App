@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
+import { BiShuffle } from 'react-icons/bi'
 import studySet from './studySet'
 import Card from './components/Card'
 import './App.css'
@@ -9,6 +10,7 @@ function App() {
   const [question, setQuestion] = useState(studySet[0].question);
   const [answer, setAnswer] = useState(studySet[0].answer)
   const [categColor, setcategColor] = useState('blue');
+
   const showRandomCard = () =>{
     const randNum = Math.floor(Math.random() * studySet.length);
 
@@ -44,7 +46,7 @@ function App() {
         <button onClick={showRandomCard}>
         <span><AiOutlineArrowRight /></span>
         </button>
-        
+        <button onClick={showRandomCard}  ><span><BiShuffle /></span></button>
       </div>
     </div>
   )
