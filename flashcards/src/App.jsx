@@ -68,6 +68,18 @@ function App() {
         />
       </div>
       <h4>Current Card: {!isShuffling ? cardIndex+1 : randIndex+1}/24</h4>
+
+      <form>
+        <label>
+          Guess the answer:  
+          <input 
+            type="text" 
+            placeholder="Place answer here"
+          />
+        </label>
+        <button>Submit</button>
+      </form>
+
       <div className="btn-container">
         <button onClick={backward}  ><span><AiOutlineArrowLeft /></span>
         </button>
