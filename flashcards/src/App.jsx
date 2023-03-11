@@ -17,7 +17,7 @@ function App() {
   const showRandomCard = () =>{
     const randNum = Math.floor(Math.random() * studySet.length);
     setRandIndex(randNum);
-    console.log({randIndex});
+    // console.log({randIndex});
     setIsShuffling(true);
     showCard(randNum);
   }
@@ -28,7 +28,7 @@ function App() {
     }
     setIsShuffling(false);
     setCardIndex(cardIndex + 1);
-    console.log({cardIndex});
+    // console.log({cardIndex});
     showCard(cardIndex+1)
   }
   function backward(){
@@ -39,34 +39,9 @@ function App() {
     setCardIndex(cardIndex - 1);
     showCard(cardIndex-1);
   }
-  // const forward = () => {
-  //   //edge case
-  //   if(cardIndex > 23){
-  //     return;
-  //   }else{
-  //     setCardIndex(cardIndex + 1);
-  //     console.log("forward: ",{cardIndex});
-  //   }
-
-  //   showCard(cardIndex);
-  // }
-
-  // const backward = () =>{
-  //   //edge case
-  //   if(cardIndex < 0){
-  //     console.log("negative", cardIndex);
-  //     return;
-  //   }else{
-  //     setCardIndex(prevState => prevState - 1);
-  //   }
-
-  //   console.log("back: ",{cardIndex});
-
-  //   showCard(cardIndex);
-  // }
 
   const showCard = (index) => {
-    console.log({index})
+    // console.log({index})
 
     setQuestion(studySet[index].question);
     setAnswer(studySet[index].answer);
