@@ -1,0 +1,100 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #d1d0d0;;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+.dark-green,
+.blue,
+.green,
+.gray,
+.yellow,
+.purple,
+.orange,
+.brown,
+.pink,
+.Card {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  height: 400px;
+  width: 500px;
+  cursor: pointer;
+  perspective: 1000px;
+  background-color: transparent;
+  transition: transform 0.4s;
+  transform-style: preserve-3d;
+}
+.dark-green:active,
+.blue:active,
+.green:active,
+.gray:active,
+.yellow:active,
+.purple:active,
+.orange:active,
+.brown:active,
+.pink:active,
+.Card:active {
+  transform: rotateX(180deg);
+  transform: rotateY(180deg);
+}
+.dark-green {
+  border: green solid 2px;
+}
+.blue {
+  border: skyblue solid 2px;
+}
+.green {
+  border: lightgreen solid 2px;
+}
+.gray {
+  border: gainsboro solid 2px;
+}
+.yellow {
+  border: rgb(252, 235, 4) solid 2px;
+}
+.purple {
+  border: rgb(173, 54, 173) solid 2px;
+}
+.orange {
+  border: orange solid 2px;
+}
+.brown {
+  border: burlywood solid 2px;
+}
+.pink {
+  border: lightpink solid 2px;
+}
+@media (prefers-color-scheme: light) {
+  
+  button {
+    background-color: #e2e2e2;
+  }
+}
