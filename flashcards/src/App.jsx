@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 import { BiShuffle } from 'react-icons/bi'
 import studySet from './studySet'
@@ -7,6 +7,8 @@ import './App.css'
 
 function App() {
   const [cardIndex, setCardIndex] = useState(0);
+  const [isShuffling, setIsShuffling] = useState(false);
+  const[randIndex, setRandIndex] = useState(0);
   const [isNotFlipped, setIsNotFlip] = useState(true);
   const [question, setQuestion] = useState(studySet[0].question);
   const [answer, setAnswer] = useState(studySet[0].answer)
@@ -14,6 +16,9 @@ function App() {
 
   const showRandomCard = () =>{
     const randNum = Math.floor(Math.random() * studySet.length);
+    setRandIndex(randNum);
+    console.log({randIndex});
+    setIsShuffling(true);
     showCard(randNum);
   }
   
@@ -21,6 +26,7 @@ function App() {
     if(cardIndex >= 23){
       return;
     }
+    setIsShuffling(false);
     setCardIndex(cardIndex + 1);
     console.log({cardIndex});
     showCard(cardIndex+1)
@@ -29,6 +35,7 @@ function App() {
     if(cardIndex <= 0){
       return;
     }
+    setIsShuffling(false);
     setCardIndex(cardIndex - 1);
     showCard(cardIndex-1);
   }
@@ -85,9 +92,9 @@ function App() {
           cardText = {isNotFlipped ? question : answer}
         />
       </div>
-
+      {!isShuffling && <h4>Current Card: {cardIndex+1}/24</h4>}
+      {isShuffling && <h4>Current Card: {randIndex+1}/24</h4>}
       <div className="btn-container">
-        <h1>{cardIndex}</h1>
         <button onClick={backward}  ><span><AiOutlineArrowLeft /></span>
         </button>
         <button onClick={forward}>
