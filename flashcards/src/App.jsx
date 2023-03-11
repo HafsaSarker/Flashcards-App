@@ -14,22 +14,23 @@ function App() {
   const [answer, setAnswer] = useState(studySet[0].answer)
   const [categColor, setcategColor] = useState('blue');
   const [input, setInput] = useState("");
-  const [isCorrect, setIsCorrect] = useState("");
+  const [isCorrect, setIsCorrect] = useState("neutral");
   const [streak, setStreak] = useState(0);
   const [longestStreak, setLongestStreak] = useState([]);
   //style for user's answer result
   const styles = {
     color: isCorrect === "right" ? "green" : "red"
   }
+
+  const resetInput = () => {
+    setInput("");
+    setIsCorrect("neutral");
+  }
+
   const handleChange = (event) => {
     setInput(event.target.value);
     // console.log({input});
    
-  }
-
-  const resetInput = () => {
-    setInput("");
-    setIsCorrect("");
   }
 
   const handleSubmit = (event) => {
@@ -38,22 +39,34 @@ function App() {
     const submittedInout = input.toLowerCase();
     setIsCorrect(submittedInout === answer ? "right" : "wrong");
     // console.log({isCorrect})
+    //streakStats();
   }
-
+  console.log({streak});
   const streakStats = () => {
-    setStreak(prevStreak => isCorrect === "right" ? prevStreak + 1 : 0);
-    setLongestStreak(prevState => {
-      return (
-        prevState.slice()
-
-      )
-    })
+    setStreak(prevStreak => {
+        if(isCorrect === "neutral"){
+          prevStreak;
+        }
+        else if(isCorrect === "right"){
+          prevStreak+1;
+        }
+        else{
+          0;
+        }
+    });
+    setLongestStreak(
+      [
+        ...longestStreak,
+        {streak}
+      ]
+    )
+    console.log({streak});
+    console.log(longestStreak);
   }
 
   const showRandomCard = () =>{
     resetInput();
     const randNum = Math.floor(Math.random() * studySet.length);
-    streakStats();
     setRandIndex(randNum);
     // console.log({randIndex});
     setIsShuffling(true);
@@ -64,7 +77,6 @@ function App() {
     if(cardIndex >= 23){
       return;
     }
-    streakStats();
     resetInput();
     setIsShuffling(false);
     setCardIndex(cardIndex + 1);
@@ -75,7 +87,6 @@ function App() {
     if(cardIndex <= 0){
       return;
     }
-    streakStats();
     resetInput();
     setIsShuffling(false);
     setCardIndex(cardIndex - 1);
@@ -103,7 +114,10 @@ function App() {
       </header>
 
       <div className="card-component" onClick={showBack}>
-        <h3>Current streak: {streak}</h3>
+        {/* <div className="stats">
+          <h3>Current streak: {streak}</h3>
+          <h3>Longest streak: {Math.max(longestStreak)}</h3>
+        </div> */}
         <Card 
           img = {question}
           categColor = {categColor}

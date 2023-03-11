@@ -10,7 +10,9 @@ form{
   padding: 10px 30px;
   border-radius: 10px;
 }
-
+#neutral{
+  border: solid 2px #7289da;
+}
 #right {
   border: solid 2px green;
   color: green;
@@ -25,7 +27,7 @@ input{
   padding: 5px 5px;
   margin-left: 10px;
   border-radius: 5px;
-  border: solid 2px #7289da;
+  
 }
 input:focus{
   outline: none;
