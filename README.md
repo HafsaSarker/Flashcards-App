@@ -31,7 +31,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='C:\Users\Hafsa\Desktop\Project-3\flashcards\public\Project3Demo.gif' title='Video Walkthrough' width='700' alt='Video Walkthrough' />
+<img src='./Project3Demo.gif' title='Video Walkthrough' width='700' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with LiceCAP  
