@@ -67,8 +67,7 @@ function App() {
           cardText = {isNotFlipped ? question : answer}
         />
       </div>
-      {!isShuffling && <h4>Current Card: {cardIndex+1}/24</h4>}
-      {isShuffling && <h4>Current Card: {randIndex+1}/24</h4>}
+      <h4>Current Card: {!isShuffling ? cardIndex+1 : randIndex+1}/24</h4>
       <div className="btn-container">
         <button onClick={backward}  ><span><AiOutlineArrowLeft /></span>
         </button>
