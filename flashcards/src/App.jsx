@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 import { BiShuffle } from 'react-icons/bi'
 import studySet from './studySet'
@@ -6,6 +6,7 @@ import Card from './components/Card'
 import './App.css'
 
 function App() {
+  const [cardIndex, setCardIndex] = useState(0);
   const [isNotFlipped, setIsNotFlip] = useState(true);
   const [question, setQuestion] = useState(studySet[0].question);
   const [answer, setAnswer] = useState(studySet[0].answer)
@@ -13,13 +14,58 @@ function App() {
 
   const showRandomCard = () =>{
     const randNum = Math.floor(Math.random() * studySet.length);
+    showCard(randNum);
+  }
+  
+  function forward(){
+    if(cardIndex >= 23){
+      return;
+    }
+    setCardIndex(cardIndex + 1);
+    console.log({cardIndex});
+    showCard(cardIndex+1)
+  }
+  function backward(){
+    if(cardIndex <= 0){
+      return;
+    }
+    setCardIndex(cardIndex - 1);
+    showCard(cardIndex-1);
+  }
+  // const forward = () => {
+  //   //edge case
+  //   if(cardIndex > 23){
+  //     return;
+  //   }else{
+  //     setCardIndex(cardIndex + 1);
+  //     console.log("forward: ",{cardIndex});
+  //   }
 
-    setQuestion(studySet[randNum].question);
-    setAnswer(studySet[randNum].answer);
-    setcategColor(studySet[randNum].categColor);
+  //   showCard(cardIndex);
+  // }
+
+  // const backward = () =>{
+  //   //edge case
+  //   if(cardIndex < 0){
+  //     console.log("negative", cardIndex);
+  //     return;
+  //   }else{
+  //     setCardIndex(prevState => prevState - 1);
+  //   }
+
+  //   console.log("back: ",{cardIndex});
+
+  //   showCard(cardIndex);
+  // }
+
+  const showCard = (index) => {
+    console.log({index})
+
+    setQuestion(studySet[index].question);
+    setAnswer(studySet[index].answer);
+    setcategColor(studySet[index].categColor);
     setIsNotFlip(true);
   }
-
   const showBack = () => {
       setIsNotFlip(prevState => !prevState);
   }
@@ -39,11 +85,12 @@ function App() {
           cardText = {isNotFlipped ? question : answer}
         />
       </div>
-     
+
       <div className="btn-container">
-        <button onClick={showRandomCard}  ><span><AiOutlineArrowLeft /></span>
+        <h1>{cardIndex}</h1>
+        <button onClick={backward}  ><span><AiOutlineArrowLeft /></span>
         </button>
-        <button onClick={showRandomCard}>
+        <button onClick={forward}>
         <span><AiOutlineArrowRight /></span>
         </button>
         <button onClick={showRandomCard}  ><span><BiShuffle /></span></button>
