@@ -13,6 +13,26 @@ function App() {
   const [question, setQuestion] = useState(studySet[0].question);
   const [answer, setAnswer] = useState(studySet[0].answer)
   const [categColor, setcategColor] = useState('blue');
+  const [input, setInput] = useState("");
+  const [isCorrect, setIsCorrect] = useState("");
+
+  //style for user's answer result
+  const styles = {
+    color: isCorrect === "right" ? "green" : "red"
+  }
+  const handleChange = (event) => {
+    setInput(event.target.value);
+    console.log({input});
+   
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("submitted input: ", input);
+    const submittedInout = input.toLowerCase();
+    setIsCorrect(submittedInout === answer ? "right" : "wrong");
+    console.log({isCorrect})
+  }
 
   const showRandomCard = () =>{
     const randNum = Math.floor(Math.random() * studySet.length);
@@ -68,17 +88,23 @@ function App() {
         />
       </div>
       <h4>Current Card: {!isShuffling ? cardIndex+1 : randIndex+1}/24</h4>
-
-      <form>
+      {isNotFlipped && 
+        <form onSubmit={handleSubmit}>
         <label>
           Guess the answer:  
           <input 
+            id={isCorrect}
             type="text" 
             placeholder="Place answer here"
+            value={input}
+            onChange={handleChange}
           />
         </label>
         <button>Submit</button>
       </form>
+      }
+
+      {!isNotFlipped && <h3 style={styles}>Your guess: {input}</h3>}
 
       <div className="btn-container">
         <button onClick={backward}  ><span><AiOutlineArrowLeft /></span>
