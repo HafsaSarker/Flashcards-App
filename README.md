@@ -1,6 +1,6 @@
 # Web Development Project 3 - *Flashcards! Part 2*
 
-Submitted by: **Hafsa**
+Submitted by: **Hafsa Sarker**
 
 This web app: **insert description**
 
